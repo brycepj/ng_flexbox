@@ -28,7 +28,9 @@ export class FlexItem {
 
 	}
 }
+// remember fixed/flexy is a setting of multiple props
 
+// {display: flex}
 var ItemStyles = {
 	height: {
 		unit: 'px',

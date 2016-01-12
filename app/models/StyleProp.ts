@@ -23,7 +23,7 @@ export class StylePropSet {
 			obj[styleProp] = styleValue;
 		});
 
-		return this.formatted = obj;
+		return obj;
 	}
 	/*
 
