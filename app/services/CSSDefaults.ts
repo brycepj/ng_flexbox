@@ -3,11 +3,11 @@ import {cssStylePairItem, cssStylePairContainer} from '../utils/interfaces';
 
 export class CSSDefaults {
 	// injected at Boot, inject anywhere
-	public container: cssStylePairContainer;
-	public item: cssStylePairItem;
+	public container:cssStylePairContainer;
+	public item:cssStylePairItem;
 
-	private _itemDefaults: cssStylePairItem;
-	private _containerDefaults: cssStylePairContainer;
+	private _itemDefaults:cssStylePairItem;
+	private _containerDefaults:cssStylePairContainer;
 	private _localExists = Local.exists;
 
 	constructor() {
@@ -22,7 +22,7 @@ export class CSSDefaults {
 
 	set container(styles:cssStylePairContainer) {
 		// TODO: Will want to validate these as possible styles
-		_.forOwn(styles, function(val, key){
+		_.forOwn(styles, function (val, key) {
 			let defaults = this._containerDefaults;
 			if (defaults.hasOwnProperty(key)) {
 				defaults[key] = val;
@@ -35,7 +35,7 @@ export class CSSDefaults {
 	}
 
 	set item(styles:cssStylePairItem) {
-		_.forOwn(styles, function(val, key){
+		_.forOwn(styles, function (val, key) {
 			let defaults = this._itemDefaults;
 			if (defaults.hasOwnProperty(key)) {
 				defaults[key] = val;
@@ -61,7 +61,7 @@ const itemDefaults = {
 	'display': 'flex',
 	'width': '300px',
 	'height': '250px',
-	'flex-grow':'0',
+	'flex-grow': '0',
 	'flex-shrink': '0',
 	'flex-order': '0',
 	'flex-basis': '0',
@@ -72,7 +72,7 @@ const containerDefaults = {
 	'display': 'block',
 	'width': '100%',
 	'height': '100%',
-	'flex-wrap':'wrap',
+	'flex-wrap': 'wrap',
 	'flex-direction': 'row',
 	'justify-content': 'center',
 	'align-items': 'center',

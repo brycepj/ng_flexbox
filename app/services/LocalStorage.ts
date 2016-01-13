@@ -1,13 +1,15 @@
-export var Local = (function(){new _Local()})();
+export var Local = (function () {
+	new _Local()
+})();
 
 class _Local {
-	private _exists: Boolean;
+	private _exists:Boolean;
 
 	constructor() {
 		this._exists = _.keys(store.getAll()).length > 0;
 	}
 
-	get exists(): Boolean {
+	get exists():Boolean {
 		return this._exists;
 	}
 

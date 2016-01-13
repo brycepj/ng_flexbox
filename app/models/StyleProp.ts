@@ -1,4 +1,4 @@
-import { StyleDefaults } from '../services/StyleDefaults';
+import { StyleDefaults } from '../services/CSSDefaults';
 
 export class StylePropSet {
 	public type: string;
