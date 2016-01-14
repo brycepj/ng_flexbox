@@ -6,15 +6,13 @@ import {TourPanelCmp, AdminPanelCmp, CodePanelCmp} from './SidebarCmps';
 import {FlexItem} from '../models/FlexItem';
 import {CSSDefaults} from '../services/CSSDefaults';
 
-declare var store: any;
-
 @Component({
 	selector: 'flex-container',
 	template: `
 		<h1>hello angular 2 flexbox</h1>
 		<div id='flex-container-wrap'>
-			<button (click)="addItem()"></button>
-			<button (click)="removeLastItem()"></button>
+			<button (click)="addItem()">add item add litem</button>
+			<button (click)="removeLastItem()">remove last item</button>
 			<div id="flex-container" *ngStyle="containerStyles" class="flex-container">
 				<flex-item *ngFor="#item of itemsList" [model]="item"></flex-item>
 			</div>
@@ -38,13 +36,10 @@ export class FlexContainerCmp {
 		this.itemsList = container.list;
 		this.containerStyles = container.styles;
 		this.addItem();
-		setTimeout(function () {
-			this.removeLastItem();
-		}, 1000);
 	}
 
 	addItem() {
-		let newItem = this.flexContainer.createFlexItem();
+		this.flexContainer.createFlexItem();
 	}
 
 	removeLastItem() {

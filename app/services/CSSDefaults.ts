@@ -1,5 +1,6 @@
 import {Local} from '../services/LocalStorage';
 import {CssStylePairItem, CssStylePairContainer} from '../utils/interfaces';
+import {Inject} from "angular2/core";
 
 const itemDefaults = {
 	'display': 'flex',
@@ -30,9 +31,12 @@ export class CSSDefaults {
 
 	private _itemDefaults:CssStylePairItem;
 	private _containerDefaults:CssStylePairContainer;
+	private _localExists:Boolean;
+	private _local:any;
 
-
-	constructor(private _local: Local, private _localExists:Boolean = _local.exists) {
+	constructor(@Inject(Local) _local) {
+		this._local = _local;
+		this._localExists = _local.exists
 		this._itemDefaults = _.cloneDeep(itemDefaults);
 		this._containerDefaults = _.cloneDeep(containerDefaults);
 		this.setup(this._localExists);

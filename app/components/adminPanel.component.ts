@@ -6,5 +6,12 @@ import {Component} from 'angular2/core';
 })
 
 export class AdminPanelCmp {
+	public options:any;
 
+	constructor() {
+		this.options = {
+			'flexWrap': ['one', 'two', 'three'],
+			'flexDirection': ['four', 'five', 'six']
+		};
+	}
 }

@@ -2,21 +2,21 @@ import {FlexItem} from './FlexItem';
 import {CSSDefaults} from '../services/CSSDefaults';
 import {CssStylePairContainer} from '../utils/interfaces';
 import {Local} from '../services/LocalStorage';
-import { Inject } from 'angular2/core';
+import {Inject} from 'angular2/core';
 
 export class FlexContainer {
 	public list:FlexItem[];
 	public styles:CssStylePairContainer;
-	private _cssDefaults:any;
-	private _local:any;
+	private _local: any;
 
-	constructor(@Inject(CSSDefaults) _cssDefaults, @Inject(Local) _local) {
+	constructor(@Inject(CSSDefaults) _cssDefaults:CSSDefaults, @Inject(Local) _local:Local) {
 		this.list = [];
-		this.styles = this._cssDefaults.container;
+		this.styles = _cssDefaults.container;
+		this._local = _local;
 	}
 
 	createFlexItem() {
-		let newItem = new FlexItem({});
+		let newItem = new FlexItem();
 		this.list.push(newItem);
 		this._local.setitemsList(this.list);
 	}

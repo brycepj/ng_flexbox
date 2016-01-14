@@ -22,20 +22,38 @@
 		<div class="cp-container">
 			<span class="cp-c-title">container properties</span>
 			<label>flex-direction:
-				<select select="flexDirectionOptions" [value]="cPropsCurrent.flexDirection"></select>
+				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
+					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
+				</select>
 			</label>
 			<label>flex-wrap:
-				<select select="flexWrapOptions" [value]="cPropsCurrent.flexWrap"></select>
+				<select [(ngModel)]="options.flexWrap" [value]="options.flexWrap">
+					<option *ngFor="#opt of options.flexWrap" [value]="opt">{{opt}}</option>
+				</select>
 			</label>
 			<label>justify-content:
-				<select select="justifyContentOptions" [value]="cPropsCurrent.justifyContent"></select>
-			</label>
+				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
+					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
+				</select>			</label>
 			<label>align-items:
-				<select select="alignItemsOptions" [value]="cPropsCurrent.alignItems"></select>
-			</label>
+				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
+					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
+				</select>			</label>
 			<label>align-content:
-				<select select="alignContentOptions" [value]="cPropsCurrent.alignContent"></select>
+				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
+					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
+				</select>
 			</label>
 		</div>
 	</div>
 </div>
+
+<!--<label>justify-content:-->
+	<!--<select select="justifyContentOptions" [value]="cPropsCurrent.justifyContent"></select>-->
+<!--</label>-->
+<!--<label>align-items:-->
+	<!--<select select="alignItemsOptions" [value]="cPropsCurrent.alignItems"></select>-->
+<!--</label>-->
+<!--<label>align-content:-->
+	<!--<select select="alignContentOptions" [value]="cPropsCurrent.alignContent"></select>-->
+<!--</label>-->

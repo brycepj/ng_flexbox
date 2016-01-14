@@ -1,6 +1,8 @@
 // this is where the data model and data-related methods go for FlexItems
 import {ItemCfg} from '../utils/interfaces';
-import {StyleProp} from './StyleProp';
+import {CSSDefaults} from '../services/CSSDefaults';
+import {Inject} from 'angular2/core';
+import {Injectable} from "angular2/core";
 
 var ItemStyles = {
 	height: {
@@ -67,23 +69,13 @@ var ContainerStyles = {
 		options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'stretch']
 	}
 };
-
+@Injectable()
 export class FlexItem {
-	public itemStyles:StyleProp[];
-	private cfg: ItemCfg;
+	public itemStyles: any;
 
-	constructor(cfg) {
+	constructor(private _cssDefaults: CSSDefaults) {
 
-		this.cfg = cfg;
-		var styles = this.itemStyles = [];
-
-		_.forOwn(ItemStyles, function (value, key) {
-			styles.push(new StyleProp(key, value));
-		});
-
-		_.forOwn(ContainerStyles, function (value, key) {
-			styles.push(new StyleProp(key, value));
-		});
+		this.itemStyles = this._cssDefaults.item;
 		// this may belong in a lower level class
 	}
 
