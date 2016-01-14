@@ -1,15 +1,14 @@
-import { StyleDefaults } from '../services/CSSDefaults';
+import { CSSDefaults } from '../services/CSSDefaults';
 
 export class StylePropSet {
 	public type: string;
-	public model: StyleDefaults;
+	public model: CSSDefaults;
 	public formatted: any;
 
-	constructor(type, StyleDefaults: StyleDefaults) {
-		this.type = type == 'container' || 'item' ? type : Error;
-		// arr of StyleProps
-		var unformatted = new StyleDefaults(type);
-		this.model = unformatted;
+	constructor() {
+		//this.type = type == 'container' || 'item' ? type : Error;
+		//// arr of StyleProps
+		//this.model = unformatted;
 		this.formatted = this.formatNgStyles();
 	}
 
@@ -25,22 +24,14 @@ export class StylePropSet {
 
 		return obj;
 	}
-	/*
-
-	*/
-
-
 }
-
-
-
 
 export class StyleProp {
 	public property:string;
 	public unit: any;
 	public value: string;
 	public options: string[];
-
+	public default: string;
 	constructor(name, cfg) {
 		this.property = name;
 		this.unit = cfg.unit || null;

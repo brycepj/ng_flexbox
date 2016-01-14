@@ -1,11 +1,9 @@
-export var Local = (function () {
-	new _Local()
-})();
+export class Local {
 
-class _Local {
 	private _exists:Boolean;
 
 	constructor() {
+
 		this._exists = _.keys(store.getAll()).length > 0;
 	}
 
@@ -13,27 +11,27 @@ class _Local {
 		return this._exists;
 	}
 
-	get itemsList():any {
+	getitemsList():any {
 		return store.get('itemsList');
 	}
 
-	set itemsList(items:any) {
+	setitemsList(items:any) {
 		store.set('itemsList', items);
 	}
 
-	get itemDefaults():any {
+	getitemDefaults():any {
 		return store.get('itemDefaults');
 	}
 
-	set itemDefaults(itemObj:any) {
-		store.set('itemDefaults', itemObj)
+	setitemDefaults(itemObj:any) {
+		store.set('itemDefaults', itemObj);
 	}
 
-	get containerDefaults():any {
+	getcontainerDefaults():any {
 		return store.get('containerDefaults');
 	}
 
-	set containerDefaults(containerObj:any) {
+	setcontainerDefaults(containerObj:any) {
 		store.set('containerDefaults', containerObj);
 	}
 }

@@ -6,6 +6,8 @@ import {TourPanelCmp, AdminPanelCmp, CodePanelCmp} from './SidebarCmps';
 import {FlexItem} from '../models/FlexItem';
 import {CSSDefaults} from '../services/CSSDefaults';
 
+declare var store: any;
+
 @Component({
 	selector: 'flex-container',
 	template: `
@@ -24,23 +26,21 @@ import {CSSDefaults} from '../services/CSSDefaults';
     </div>
 	`,
 	directives: [NgFor, FlexItemCmp, NgStyle,
-		TourPanelCmp, AdminPanelCmp, CodePanelCmp],
+		TourPanelCmp, AdminPanelCmp, CodePanelCmp]
 })
 
 export class FlexContainerCmp {
 	public itemsList:any;
 	public containerStyles:any;
 
-	private flexContainer:FlexContainer;
-
-	constructor() {
-		let container = this.flexContainer = new FlexContainer();
+	constructor(private flexContainer: FlexContainer) {
+		let container = this.flexContainer;
 		this.itemsList = container.list;
 		this.containerStyles = container.styles;
 		this.addItem();
 		setTimeout(function () {
 			this.removeLastItem();
-		}, 1000)
+		}, 1000);
 	}
 
 	addItem() {
