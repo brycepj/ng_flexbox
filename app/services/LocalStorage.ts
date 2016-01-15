@@ -1,5 +1,7 @@
-export class Local {
+declare var store:StoreJSStatic;
+declare var _:any;
 
+export class Local {
 	private _exists:Boolean;
 
 	constructor() {

@@ -7,7 +7,7 @@ import {CSSDefaults} from '../services/CSSDefaults';
 @Component({
 	selector: 'flex-item',
 	template: `
-	  <div [style]="model.itemStyles" class="flex-item animated">
+	  <div [style]="itemStyles" class="flex-item animated">
       <a href="#" class="fi-destroy-btn" (click)="destroySelf"><i class="fa fa-times"></i></a>
       <a href="#" class="fi-settings-btn" (click)="toggleSettings"><!--, visible:tallEnough-->
         <i class="fa fa-cog"></i>
@@ -41,14 +41,16 @@ import {CSSDefaults} from '../services/CSSDefaults';
       </div>
     </div>
 	`,
-	directives: [NgIf]
+	directives: [NgIf],
+	injectables: [CSSDefaults]
 })
 
 export class FlexItemCmp {
 	@Input() model:FlexItem;
 	public itemStyles: any;
-	constructor(private _cssDefaults: CSSDefaults) {
+	constructor(private _CSSDefaults: CSSDefaults) {
 		console.log("this", this);
+		this.itemStyles = this._CSSDefaults.item;
 	}
 }
 

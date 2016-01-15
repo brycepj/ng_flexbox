@@ -13,7 +13,7 @@ import {CSSDefaults} from '../services/CSSDefaults';
 		<div id='flex-container-wrap'>
 			<button (click)="addItem()">add item add litem</button>
 			<button (click)="removeLastItem()">remove last item</button>
-			<div id="flex-container" *ngStyle="containerStyles" class="flex-container">
+			<div id="flex-container" [style]="containerStyles" class="flex-container">
 				<flex-item *ngFor="#item of itemsList" [model]="item"></flex-item>
 			</div>
 			<aside class="sidebar">
@@ -24,17 +24,18 @@ import {CSSDefaults} from '../services/CSSDefaults';
     </div>
 	`,
 	directives: [NgFor, FlexItemCmp, NgStyle,
-		TourPanelCmp, AdminPanelCmp, CodePanelCmp]
+		TourPanelCmp, AdminPanelCmp, CodePanelCmp],
+	providers: [CSSDefaults]
 })
 
 export class FlexContainerCmp {
 	public itemsList:any;
 	public containerStyles:any;
 
-	constructor(private flexContainer: FlexContainer) {
+	constructor(private flexContainer: FlexContainer, private _CSSDefaults:CSSDefaults) {
 		let container = this.flexContainer;
 		this.itemsList = container.list;
-		this.containerStyles = container.styles;
+		this.containerStyles = this._CSSDefaults.container;
 		this.addItem();
 	}
 

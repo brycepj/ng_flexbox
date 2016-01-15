@@ -9,7 +9,7 @@ import {FlexContainer} from './models/FlexContainer';
 bootstrap(AppCmp, [
   ROUTER_PROVIDERS,
   provide(LocationStrategy, { useClass: HashLocationStrategy }),
-  provide(CSSDefaults, {useClass:CSSDefaults}),
   provide(Local, {useClass:Local}),
   provide(FlexContainer, {useClass:FlexContainer})
 ]);
+

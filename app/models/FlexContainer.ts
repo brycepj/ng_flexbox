@@ -9,9 +9,8 @@ export class FlexContainer {
 	public styles:CssStylePairContainer;
 	private _local: any;
 
-	constructor(@Inject(CSSDefaults) _cssDefaults:CSSDefaults, @Inject(Local) _local:Local) {
+	constructor(@Inject(Local) _local:Local) {
 		this.list = [];
-		this.styles = _cssDefaults.container;
 		this._local = _local;
 	}
 

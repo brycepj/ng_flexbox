@@ -1,6 +1,6 @@
 import {Local} from '../services/LocalStorage';
 import {CssStylePairItem, CssStylePairContainer} from '../utils/interfaces';
-import {Inject} from "angular2/core";
+import {Inject, Injectable} from "angular2/core";
 
 const itemDefaults = {
 	'display': 'flex',
@@ -24,6 +24,7 @@ const containerDefaults = {
 	'align-self': 'center'
 };
 
+@Injectable()
 export class CSSDefaults {
 	// injected at Boot, inject anywhere
 	public container:CssStylePairContainer;
@@ -75,10 +76,14 @@ export class CSSDefaults {
 	}
 
 	setupContainerDefaults(exists:Boolean):void {
-		this.container = exists ? this._local.getcontainerDefaults : this._containerDefaults;
+		this.container = exists
+			? this._local.getcontainerDefaults()
+			: this._containerDefaults;
 	}
 
 	setupItemDefaults(exists) {
-		this.item = exists ? this._local.getitemDefaults : this._itemDefaults;
+		this.item = exists
+			? this._local.getitemDefaults()
+			: this._itemDefaults;
 	}
 }
