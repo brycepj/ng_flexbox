@@ -6,9 +6,6 @@ export class StylePropSet {
 	public formatted: any;
 
 	constructor() {
-		//this.type = type == 'container' || 'item' ? type : Error;
-		//// arr of StyleProps
-		//this.model = unformatted;
 		this.formatted = this.formatNgStyles();
 	}
 

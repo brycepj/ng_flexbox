@@ -1,4 +1,6 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
+import {FlexContainer} from '../services/FlexContainer';
+import {CSSDefaults} from '../services/CSSDefaults';
 
 @Component({
 	selector: 'admin-panel',
@@ -6,12 +8,22 @@ import {Component} from 'angular2/core';
 })
 
 export class AdminPanelCmp {
-	public options:any;
+	public options: any;
+	constructor(public flexContainer: FlexContainer, private _cssDefaults: CSSDefaults) {
+		this.options = this._cssDefaults.containerOptions;
+	}
 
-	constructor() {
-		this.options = {
-			'flexWrap': ['one', 'two', 'three'],
-			'flexDirection': ['four', 'five', 'six']
-		};
+	addItem() {
+		this.flexContainer.createFlexItem();
+	}
+
+	removeLastItem() {
+		this.flexContainer.removeItem();
+	}
+
+	setContainerStyle(prop:string, val:string) {
+		var formatted = _.kebabCase(prop);
+		var obj = {}; obj[formatted] = val;
+		this._cssDefaults.setcontainer(obj);
 	}
 }

@@ -1,17 +1,17 @@
-import {FlexItem} from './FlexItem';
-import {CSSDefaults} from '../services/CSSDefaults';
+import {FlexItem} from './../models/FlexItem';
+import {CSSDefaults} from './CSSDefaults';
 import {CssStylePairContainer} from '../utils/interfaces';
-import {Local} from '../services/LocalStorage';
+import {Local} from './LocalStorage';
 import {Inject} from 'angular2/core';
+import {Injectable} from 'angular2/core';
 
+@Injectable()
 export class FlexContainer {
-	public list:FlexItem[];
-	public styles:CssStylePairContainer;
-	private _local: any;
+	public list:any = [];
+	public styles: any;
 
-	constructor(@Inject(Local) _local:Local) {
-		this.list = [];
-		this._local = _local;
+	constructor(private _local:Local, private _cssDefaults: CSSDefaults) {
+		this.styles = this._cssDefaults.getcontainer();
 	}
 
 	createFlexItem() {

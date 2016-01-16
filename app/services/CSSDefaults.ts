@@ -24,11 +24,23 @@ const containerDefaults = {
 	'align-self': 'center'
 };
 
+const containerOptions = {
+	'display': 'block',
+	'width': '100%',
+	'height': '100%',
+	'flexWrap': ['wrap', 'nowrap'],
+	'flexDirection': ['row', 'column'],
+	'justifyContent': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
+	'alignItems': ['flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
+	'alignContent': ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'stretch']
+};
+
 @Injectable()
 export class CSSDefaults {
 	// injected at Boot, inject anywhere
 	public container:CssStylePairContainer;
 	public item:CssStylePairItem;
+	public containerOptions: any = containerOptions;
 
 	private _itemDefaults:CssStylePairItem;
 	private _containerDefaults:CssStylePairContainer;
@@ -87,3 +99,71 @@ export class CSSDefaults {
 			: this._itemDefaults;
 	}
 }
+
+/*
+*
+* var ItemStyles = {
+ height: {
+ unit: 'px',
+ value: '250',
+ options: null
+ },
+ width: {
+ unit: 'px',
+ value: '300',
+ options: null
+ },
+ margin: {
+ unit: 'px',
+ value: '10',
+ options: null
+ },
+ flexGrow: {
+ unit: null,
+ value: '1',
+ options: null
+ },
+ flexShrink: {
+ unit: null,
+ value: '0',
+ options: []
+ },
+ flexBasis: {
+ unit: 'px',
+ value: '200',
+ options: null
+ },
+ alignSelf: {
+ unit: null,
+ value: '',
+ options: ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch', 'inherit']
+ }
+ };
+
+ var ContainerStyles = {
+ flexDirection: {
+ unit: null,
+ value: '',
+ options: ['row', 'column']
+ },
+ flexWrap: {
+ unit: null,
+ value: '',
+ options: ['wrap', 'nowrap']
+ },
+ justifyContent: {
+ unit: null,
+ value: '',
+ options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around']
+ },
+ alignItems: {
+ unit: null,
+ value: '',
+ options: ['flex-start', 'flex-end', 'center', 'baseline', 'stretch']
+ },
+ alignContent: {
+ unit: null,
+ value: '',
+ options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'stretch']
+ }
+ };*/

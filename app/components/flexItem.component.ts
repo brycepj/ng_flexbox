@@ -12,8 +12,8 @@ import {CSSDefaults} from '../services/CSSDefaults';
       <a href="#" class="fi-settings-btn" (click)="toggleSettings"><!--, visible:tallEnough-->
         <i class="fa fa-cog"></i>
       </a>
-      <span class="fi-index">{{item.text.index}}</span>
-      <p class="fi-content" *ngIf="viewContent">{{item.text.content}}</p>
+      <span class="fi-index">{{model.text}}</span>
+      <p class="fi-content" *ngIf="viewContent">{{model.text}}</p>
       <div class="fi-options" *ngIf="viewSettings">
         <span class="fi-o-title">
           <a href="#" (click)="makeFixedWidth" [style]="{fontSize:highlightFixed}">fixed</a> or
@@ -49,7 +49,6 @@ export class FlexItemCmp {
 	@Input() model:FlexItem;
 	public itemStyles: any;
 	constructor(private _CSSDefaults: CSSDefaults) {
-		console.log("this", this);
 		this.itemStyles = this._CSSDefaults.item;
 	}
 }

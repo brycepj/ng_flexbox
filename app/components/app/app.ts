@@ -11,20 +11,20 @@ import {AboutCmp} from '../about/about';
 @Component({
   selector: 'flexboxapp',
   template:`
-    <div class="masthead">
+    <div class="masthead hidden">
       <h1 class="mh-logo">{{siteTitle}}</h1>
       <p class="mh-desc">{{siteDesc}}</p>
 
       <div class="mh-cond-content">
-          <h2 class="mh-desc">{{siteStepsTitle}}</h2>
-              <ul>
-                <li *ngFor="#step of siteSteps">
-                  {{ step }}
-                </li>
-              </ul>
-              <p class="mh-warning">This is a warning {{warning}}</p>
-              <p>{{lastUpdated}}</p>
-        </div>
+        <h2 class="mh-desc">{{siteStepsTitle}}</h2>
+        <ul>
+          <li *ngFor="#step of siteSteps">
+            {{ step }}
+          </li>
+        </ul>
+        <p class="mh-warning">This is a warning {{warning}}</p>
+        <p>{{lastUpdated}}</p>
+      </div>
     </div>
     <nav>
       <a [routerLink]="['/Home']">Home</a>

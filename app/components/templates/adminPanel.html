@@ -4,8 +4,8 @@
 		<div class="cp-items">
 			<span class="cp-c-title">new item</span>
 			<div class="cp-i-add-remove">
-				<a class="cp-i-add" (click)="newItem"><i class="fa fa-plus"></i></a>
-				<a class="cp-i-remove" (click)="oneLessItem"><i class="fa fa-minus"></i></a>
+				<a class="cp-i-add" (click)="addItem()"><i class="fa fa-plus"></i></a>
+				<a class="cp-i-remove" (click)="removeLastItem()"><i class="fa fa-minus"></i></a>
 			</div>
 			<div class="cp-i-settings">
 				<div class="cp-i-s-width">
@@ -22,26 +22,27 @@
 		<div class="cp-container">
 			<span class="cp-c-title">container properties</span>
 			<label>flex-direction:
-				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
-					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
+				<select>
+					<option *ngFor="#opt of options.flexDirection" (click)="setContainerStyle('flexDirection', opt)">{{opt}}</option>
 				</select>
 			</label>
 			<label>flex-wrap:
-				<select [(ngModel)]="options.flexWrap" [value]="options.flexWrap">
-					<option *ngFor="#opt of options.flexWrap" [value]="opt">{{opt}}</option>
+				<select [(ngModel)]="options.flexWrap">
+					<option *ngFor="#opt of options.flexWrap" (click)="setContainerStyle('flexWrap', opt)">{{opt}}</option>
 				</select>
 			</label>
 			<label>justify-content:
-				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
-					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
+				<select [(ngModel)]="options.justifyContent">
+					<option *ngFor="#opt of options.justifyContent" (click)="setContainerStyle('justifyContent', opt)">{{opt}}</option>
 				</select>			</label>
 			<label>align-items:
-				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
-					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
-				</select>			</label>
+				<select [(ngModel)]="options.alignItems">
+					<option *ngFor="#opt of options.alignItems" (click)="setContainerStyle('alignItems', opt)">{{opt}}</option>
+				</select>
+			</label>
 			<label>align-content:
-				<select [(ngModel)]="options.flexDirection" [value]="options.flexDirection">
-					<option *ngFor="#opt of options.flexDirection" [value]="opt">{{opt}}</option>
+				<select [(ngModel)]="options.alignContent">
+					<option *ngFor="#opt of options.alignContent" (click)="setContainerStyle('alignContent', opt)">{{opt}}</option>
 				</select>
 			</label>
 		</div>

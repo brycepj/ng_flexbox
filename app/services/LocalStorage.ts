@@ -1,11 +1,11 @@
 declare var store:StoreJSStatic;
 declare var _:any;
+import {Injectable} from 'angular2/core';
 
+@Injectable()
 export class Local {
 	private _exists:Boolean;
-
 	constructor() {
-
 		this._exists = _.keys(store.getAll()).length > 0;
 	}
 
