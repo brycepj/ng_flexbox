@@ -3,7 +3,7 @@
 // Definitions by: Vincent Bortone <https://github.com/vbortone/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-// store.js exposes a simple API for cross browser local storage
+// store.js exposes a simple API for cross browser itemDefaults storage
 
 interface StoreJSStatic {
 	set(key: string, value: any): any;

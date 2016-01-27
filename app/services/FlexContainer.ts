@@ -4,45 +4,36 @@ import {CssStylePairContainer} from '../utils/interfaces';
 import {Local} from './LocalStorage';
 import {Inject} from 'angular2/core';
 import {Injectable} from 'angular2/core';
+import {containerOptions, containerDefaults} from '../utils/data';
+import {FlexItemFactory} from '../services/FlexItemFactory';
 
 @Injectable()
 export class FlexContainer {
 	public list:any = [];
 	public styles: any;
-
-	constructor(private _local:Local, private _cssDefaults: CSSDefaults) {
-		this.styles = this._cssDefaults.getcontainer();
+	public styleOptions: any;
+	constructor(private _flexItemFactory: FlexItemFactory) {
+		this.styles = containerDefaults;
+		this.styleOptions = containerOptions;
 	}
 
 	createFlexItem() {
-		let newItem = new FlexItem();
+		let newItem = this._flexItemFactory.create();
 		this.list.push(newItem);
-		this._local.setitemsList(this.list);
 	}
 
-	removeItem() {
-		this.list.pop();
-		this._local.setitemsList(this.list);
+	removeItem(idx?:number):void {
+		let list = this.list;
+		if (idx) {
+			list.pop(idx);
+		} else {
+			list.pop();
+		}
 	}
 
-/*	removeOneItem() {
-
+	removeAll():void {
+		this.list = [];
 	}
 
-	removeAllItems() {
-
-	}
-
-	retrieveSaved() {
-
-	}
-
-	makeHolyGrail() {
-
-	}
-
-	makeResponsiveNav() {
-
-	}*/
 }
 

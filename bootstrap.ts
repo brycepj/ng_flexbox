@@ -8,12 +8,12 @@ import {FlexContainer} from './services/FlexContainer';
 import {FlexItemFactory} from './services/FlexItemFactory';
 
 bootstrap(AppCmp, [
-  ROUTER_PROVIDERS,
-  Local,
-  provide(LocationStrategy, { useClass: HashLocationStrategy }),
-  provide(Local, { useClass:Local }),
-  provide(FlexContainer, {useClass:FlexContainer}),
-  provide(CSSDefaults, {useClass:CSSDefaults}),
-  provide(FlexItemFactory, {useClass:FlexItemFactory})
+    ROUTER_PROVIDERS,
+    Local,
+    provide(LocationStrategy, { useClass: HashLocationStrategy }),
+    provide(Local, { useClass: Local }),
+    provide(FlexContainer, { useClass: FlexContainer }),
+    provide(CSSDefaults, { useClass: CSSDefaults }),
+    provide(FlexItemFactory, { useClass: FlexItemFactory })
 ]);
 

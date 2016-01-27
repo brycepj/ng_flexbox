@@ -1,3 +1,4 @@
 TODO:
 - Next is setting up the admin panel
-    - think through how it should manage styles
+    - get styles of flex-container updating based on adjustments
+    -

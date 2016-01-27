@@ -1,6 +1,7 @@
 import * as gulp from 'gulp';
 import {runSequence, task} from './tools/utils';
-
+var tsfmt = require('gulp-tsfmt');
+var path = require('path');
 // --------------
 // Clean (override).
 gulp.task('clean',       task('clean', 'all'));
@@ -77,3 +78,5 @@ gulp.task('serve', done =>
 //   runSequence('build.docs',
 //               'serve.docs',
 //               done));
+
+

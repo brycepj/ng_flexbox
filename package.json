@@ -37,6 +37,7 @@
     "gulp-shell": "~0.4.3",
     "gulp-sourcemaps": "~1.5.2",
     "gulp-template": "^3.0.0",
+    "gulp-tsfmt": "^1.0.2",
     "gulp-tslint": "^3.3.0",
     "gulp-tslint-stylish": "^1.0.4",
     "gulp-typescript": "~2.8.2",

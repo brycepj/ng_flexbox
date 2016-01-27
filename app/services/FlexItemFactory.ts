@@ -1,16 +1,16 @@
 import {FlexItem} from '../models/FlexItem';
+import {CSSDefaults} from "./CSSDefaults";
+import {Injectable} from "angular2/core";
 
+@Injectable()
 export class FlexItemFactory {
 	// eventually validate with a validate method
-	constructor() {
-		this.validate();
-	}
+	constructor(private _cssDefaults:CSSDefaults) {}
 
-	validate(throwIt?: Boolean) {
-		if (!throwIt) throw Error('NOT VALID CFG!!');
-	}
-	create(cfg) {
-		return new FlexItem(cfg);
+	create() {
+		let defaults = this._cssDefaults.getitem();
+		var helloItem = new FlexItem(defaults);
+		return helloItem;
 	}
 }
 

@@ -3,29 +3,29 @@ import {CssStylePairItem, CssStylePairContainer} from '../utils/interfaces';
 import {Inject, Injectable} from "angular2/core";
 
 const itemDefaults = {
-	'display': 'flex',
+	'display': 'block',
 	'width': '300px',
 	'height': '250px',
-	'flex-grow': '0',
-	'flex-shrink': '0',
-	'flex-order': '0',
-	'flex-basis': '0',
-	'align-self': 'center'
+	'flexGrow': '0',
+	'flexShrink': '0',
+	'flexOrder': '0',
+	'flexBasis': '0',
+	'alignSelf': 'center'
 };
 
 const containerDefaults = {
 	'display': 'block',
 	'width': '100%',
 	'height': '100%',
-	'flex-wrap': 'wrap',
-	'flex-direction': 'row',
-	'justify-content': 'center',
-	'align-items': 'center',
-	'align-self': 'center'
+	'flexWrap': 'wrap',
+	'flexDirection': 'row',
+	'justifyContent': 'center',
+	'alignItems': 'center',
+	'alignContent': 'center'
 };
 
 const containerOptions = {
-	'display': 'block',
+	'display': 'flex',
 	'width': '100%',
 	'height': '100%',
 	'flexWrap': ['wrap', 'nowrap'],
@@ -56,7 +56,7 @@ export class CSSDefaults {
 	}
 
 	getcontainer() {
-		return this._containerDefaults;
+		return _.cloneDeep(this._containerDefaults);
 	}
 
 	setcontainer(styles:CssStylePairContainer) {
@@ -70,7 +70,7 @@ export class CSSDefaults {
 	}
 
 	getitem() {
-		return this._itemDefaults;
+		return _.cloneDeep(this._itemDefaults);
 	}
 
 	setitem(styles:CssStylePairItem) {
@@ -136,7 +136,7 @@ export class CSSDefaults {
  alignSelf: {
  unit: null,
  value: '',
- options: ['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch', 'inherit']
+ options: ['auto', 'flexstart', 'flexend', 'center', 'baseline', 'stretch', 'inherit']
  }
  };
 
@@ -154,16 +154,16 @@ export class CSSDefaults {
  justifyContent: {
  unit: null,
  value: '',
- options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around']
+ options: ['flexstart', 'flexend', 'center', 'spacebetween', 'spacearound']
  },
  alignItems: {
  unit: null,
  value: '',
- options: ['flex-start', 'flex-end', 'center', 'baseline', 'stretch']
+ options: ['flexstart', 'flexend', 'center', 'baseline', 'stretch']
  },
  alignContent: {
  unit: null,
  value: '',
- options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'stretch']
+ options: ['flexstart', 'flexend', 'center', 'spacebetween', 'spacearound', 'stretch']
  }
  };*/

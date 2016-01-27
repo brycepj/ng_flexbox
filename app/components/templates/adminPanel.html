@@ -5,44 +5,48 @@
 			<span class="cp-c-title">new item</span>
 			<div class="cp-i-add-remove">
 				<a class="cp-i-add" (click)="addItem()"><i class="fa fa-plus"></i></a>
-				<a class="cp-i-remove" (click)="removeLastItem()"><i class="fa fa-minus"></i></a>
+				<a class="cp-i-remove" (click)="removeItem()"><i class="fa fa-minus"></i></a>
 			</div>
 			<div class="cp-i-settings">
 				<div class="cp-i-s-width">
-					<label for="fixed">fixed<input (checked)="flexType" type="radio" [name]="flexType" [value]="fixed" checked/></label>
-					<label for="flexy">flexible<input (checked)="flexType" type="radio" [name]="flexType" [value]="flexy"/></label>
+					<label>fixed
+						<input class="form-control" (change)="toggleLocalValues()" type="radio" name="flexType"
+									 checked/></label>
+					<label>flexible
+						<input class="form-control" (change)="toggleLocalValues()" type="radio" name="flexType"/></label>
 				</div>
-				<label for="">lorem? <input [value]="loremCount" type="text"/></label>
+				<label>lorem? <input class="form-control" [(ngModel)]="itemDefaults.lorem" type="text"/></label>
 			</div>
 			<div class="cp-actions">
-				<a href="#" (click)="destroyAll">delete all</a>
-				<a href="#" (click)="tourResize">resize box</a>
+				<a href="#" (click)="removeAllItems()">delete all</a>
+				<a href="#" (click)="tourResize()">resize box</a>
 			</div>
 		</div>
 		<div class="cp-container">
 			<span class="cp-c-title">container properties</span>
 			<label>flex-direction:
-				<select>
-					<option *ngFor="#opt of options.flexDirection" (click)="setContainerStyle('flexDirection', opt)">{{opt}}</option>
+				<select class="form-control" (change)="updateContainerStyles('flexDirection', $event)">
+					<option *ngFor="#opt of flexContainer.styleOptions.flexDirection | derp" [value]="opt">{{opt}}</option>
 				</select>
 			</label>
 			<label>flex-wrap:
-				<select [(ngModel)]="options.flexWrap">
-					<option *ngFor="#opt of options.flexWrap" (click)="setContainerStyle('flexWrap', opt)">{{opt}}</option>
+				<select class="form-control" [(ngModel)]="flexContainer.styles.flexWrap">
+					<option *ngFor="#opt of flexContainer.styleOptions.flexWrap | derp" [value]="opt"
+									(click)="flexContainer.styles.flexWrap=opt">{{opt}}</option>
 				</select>
 			</label>
 			<label>justify-content:
-				<select [(ngModel)]="options.justifyContent">
-					<option *ngFor="#opt of options.justifyContent" (click)="setContainerStyle('justifyContent', opt)">{{opt}}</option>
+				<select class="form-control" [(ngModel)]="flexContainer.styles.justifyContent">
+					<option *ngFor="#opt of flexContainer.styleOptions.justifyContent | derp" [value]="opt">{{opt}}</option>
 				</select>			</label>
 			<label>align-items:
-				<select [(ngModel)]="options.alignItems">
-					<option *ngFor="#opt of options.alignItems" (click)="setContainerStyle('alignItems', opt)">{{opt}}</option>
+				<select class="form-control" [(ngModel)]="flexContainer.styles.alignItems">
+					<option *ngFor="#opt of flexContainer.styleOptions.alignItems | derp" [value]="opt">{{opt}}</option>
 				</select>
 			</label>
 			<label>align-content:
-				<select [(ngModel)]="options.alignContent">
-					<option *ngFor="#opt of options.alignContent" (click)="setContainerStyle('alignContent', opt)">{{opt}}</option>
+				<select class="form-control" [(ngModel)]="flexContainer.styles.alignContent">
+					<option *ngFor="#opt of flexContainer.styleOptions.alignContent | derp" [value]="opt">{{opt}}</option>
 				</select>
 			</label>
 		</div>
