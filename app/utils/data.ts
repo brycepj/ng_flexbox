@@ -10,7 +10,7 @@ export var containerOptions = {
 };
 
 export var containerDefaults = {
-	'display': 'block',
+	'display': 'flex',
 	'width': '100%',
 	'height': '100%',
 	'flexWrap': 'wrap',

@@ -14,16 +14,24 @@ import {PropsToSelectors} from '../utils/pipes';
 
   `],
 	template: `
-		<h1>hello angular 2 flexbox</h1>
+		<aside class="sidebar">
+			<tour-panel></tour-panel>
+			<admin-panel></admin-panel>
+			<code-panel list="flexContainer.list"></code-panel>
+		</aside>
 		<div id='flex-container-wrap'>
-			<div id="flex-container" [ngStyle]="flexContainer.styles | PropsToSelectors" class="flex-container">
+			<div id="flex-container"  [ngStyle]="{
+		    'width': flexContainer.styles.width,
+		    'height': flexContainer.styles.height,
+	      'display': flexContainer.styles.display,
+				'flex-wrap': flexContainer.styles.flexWrap,
+				'flex-direction': flexContainer.styles.flexDirection,
+				'justify-content': flexContainer.styles.justifyContent,
+				'align-items': flexContainer.styles.alignItems,
+				'align-content': flexContainer.styles.alignContent
+	    }" class="flex-container">
 				<flex-item *ngFor="#item of flexContainer.list" [item]="item"></flex-item>
 			</div>
-			<aside class="sidebar">
-				<tour-panel></tour-panel>
-				<admin-panel></admin-panel>
-				<code-panel></code-panel>
-			</aside>
     </div>
 	`,
 	directives: [NgFor, FlexItemCmp, NgStyle,
@@ -33,5 +41,5 @@ import {PropsToSelectors} from '../utils/pipes';
 })
 
 export class FlexContainerCmp {
-	constructor(public flexContainer: FlexContainer) {}
+	constructor(private flexContainer: FlexContainer) {}
 }

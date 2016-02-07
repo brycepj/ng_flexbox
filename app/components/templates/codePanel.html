@@ -3,29 +3,28 @@
 	<div class="cb-item">
 		<code>
 				<pre>
-				.flex-container {
-				    display:flex;
-				    flex-direction: <span data-bind="text:cPropsCurrent.flexDirection"></span>;
-				    flex-wrap: <span data-bind="text:cPropsCurrent.flexWrap"></span>;
-				    justify-content: <span data-bind="text:cPropsCurrent.justifyContent"></span>;
-				    align-content: <span data-bind="text:cPropsCurrent.alignContent"></span>;
-				    align-items: <span data-bind="text:cPropsCurrent.alignItems"></span>;
-				}
+.flex-container {
+	display: {{flexContainer.styles.display}};
+	flex-direction: {{flexContainer.styles.flexDirection}};
+	flex-wrap: {{flexContainer.styles.flexWrap}};
+	justify-content: {{flexContainer.styles.justifyContent}};
+	align-content: {{flexContainer.styles.alignContent}};
+	align-items: {{flexContainer.styles.alignItems}};
+}
 				</pre>
 		</code>
 	</div>
-	<div class="cb-item">
+	<div *ngFor="#item of flexContainer.list" class="cb-item">
 		<code>
 				<pre>
-				.flex-items-default {
-				    width: <span data-bind="text:iPropsDefault.width">null</span>;
-				    height: <span data-bind="text:iPropsDefault.height">null</span>;
-				    flex-grow: <span data-bind="text:iPropsDefault.flexGrow">null</span>;
-				    flex-shrink: <span data-bind="text:iPropsDefault.flexGrow">null</span>;
-				    flex-basis: <span data-bind="text:iPropsDefault.flexGrow">null</span>;
-				}
+.flex-items-{{item.index}} {
+	width: {{item.styles.width}};
+	height: {{item.styles.height}};
+	flex-grow: {{item.styles.flexGrow}};
+	flex-shrink: {{item.styles.flexShrink}};
+	flex-basis: {{item.styles.flexBasis}};
+}
 				</pre>
 		</code>
 	</div>
-	<div class="code-box-items" data-bind="template: { name: 'code-box-items', foreach: items, as:'item' }"></div>
 </div>

@@ -2822,10 +2822,11 @@ a .fa {
     cursor: pointer;
 }
 
-body > flexboxapp {
-    width:100%; height: 100%;
-}
 
 input {
     color: black!important;
+}
+
+#flex-container {
+    height: 100%;
 }

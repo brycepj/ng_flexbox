@@ -19,6 +19,7 @@ export class FlexContainer {
 
 	createFlexItem() {
 		let newItem = this._flexItemFactory.create();
+		newItem['index'] = this.list.length;
 		this.list.push(newItem);
 	}
 

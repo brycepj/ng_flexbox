@@ -15,7 +15,7 @@ import {containerOptions} from '../utils/data';
 export class AdminPanelCmp {
 	public options: any;
 	public itemDefaults: any;
-	constructor(public flexContainer: FlexContainer, private _cssDefaults: CSSDefaults) {
+	constructor(private flexContainer: FlexContainer, private _cssDefaults: CSSDefaults) {
 		this.options = containerOptions;
 		this.itemDefaults = {
 			type: {
@@ -27,8 +27,12 @@ export class AdminPanelCmp {
 		};
 	}
 
-	updateContainerStyles(thing, evt) {
-		console.log("Thinsg", thing, evt);
+	updateContainerStyles(prop, evt) {
+		var srcElem = evt.srcElement;
+		var newVal = srcElem.value;
+		// prop = _.kebabCase(prop);
+		this.flexContainer.styles[prop] = newVal;
+		console.log("Thinsg", prop, newVal);
 	}
 
 	changeItemTypeDefault(type, event) {

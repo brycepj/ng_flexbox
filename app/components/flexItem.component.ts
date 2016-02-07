@@ -86,6 +86,10 @@ export class FlexItemCmp {
 		this.isFlexy = true;
 		this.isFixed = false;
 		this.item.styles.display = 'flex';
+		this.item.styles.width = '';
+		this.item.styles.flexGrow = "1";
+		this.item.styles.flexShrink = "0";
+		this.item.styles.flexBasis = "100px";
 	}
 	getItemIndex(){
 		// this should probably be handled by the flexContainer class
