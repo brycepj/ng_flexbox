@@ -10,30 +10,20 @@ import {FlexContainer} from '../services/FlexContainer';
 @Component({
 	selector: 'flex-item',
 	template: `
-	  <div [ngStyle]="{
-		    'width': item.styles.width,
-		    'height': item.styles.height,
-	      'display': item.styles.display,
-				'flex-grow': item.styles.flexGrow,
-				'flex-shrink': item.styles.flexShrink,
-				'flex-order': item.styles.flexOrder,
-				'flex-basis': item.styles.flexBasis,
-				'align-self': item.styles.alignSelf
-	    }" class="flex-item animated">
       <a href="#" class="fi-destroy-btn" (click)="removeSelf()"><i class="fa fa-times"></i></a>
       <a href="#" class="fi-settings-btn" (click)="toggleViewMode()"><!--, visible:tallEnough-->
         <i class="fa fa-cog"></i>
       </a>
       <span class="fi-index">{{getItemIndex()}}</span>
       <div class="fi-content"  *ngIf="viewMode">
-        <p>{{item.text}}</p>
+        <p>{{item.lorem}}</p>
       </div>
       <div class="fi-options" *ngIf="editMode">
         <span class="fi-o-title">
-          <a (click)="makeFixedWidth()">fixed</a> or
-          <a (click)="makeFlexyWidth()">flexy</a> width?
+          <a (click)="makeFixedWidth()" [style.font-size]="typeSwitcherFontSize('fixed')">fixed</a> or
+          <a (click)="makeFlexyWidth()" [style.font-size]="typeSwitcherFontSize('flexy')">flexy</a> width?
         </span>
-        <div *ngIf="isFixed" class="fi-options-fixed">
+        <div *ngIf="item.settings.state == 'fixed'" class="fi-options-fixed">
           <label>width:
             <input type="text" [(ngModel)]="item.styles.width" (change)="logMe($event)">
           </label>
@@ -41,7 +31,7 @@ import {FlexContainer} from '../services/FlexContainer';
             <input type="text" [(ngModel)]="item.styles.height">
           </label>
         </div>
-        <div *ngIf="isFlexy" class="fi-options-flexy">
+        <div *ngIf="item.settings.state == 'flexy'" class="fi-options-flexy">
           <label>flex-grow:
             <input type="text" [(ngModel)]="item.styles.flexGrow">
           </label>
@@ -53,7 +43,6 @@ import {FlexContainer} from '../services/FlexContainer';
           </label>
         </div>
       </div>
-    </div>
 	`,
 	directives: [NgIf, NgStyle, NgModel],
 	pipes: [PropsToSelectors]
@@ -77,27 +66,30 @@ export class FlexItemCmp {
 		this.editMode = !this.editMode;
 	}
 
+	toggleState(){
+		this.item.settings.state = this.item.settings.state === 'fixed' ?  'flexy' : 'fixed';
+	}
+
 	makeFixedWidth() {
-		this.isFixed = true;
-		this.isFlexy = false;
-		this.item.styles.display = 'block';
+		this.toggleState();
+		this.item.makeMeFixed();
 	}
 	makeFlexyWidth() {
-		this.isFlexy = true;
-		this.isFixed = false;
-		this.item.styles.display = 'flex';
-		this.item.styles.width = '';
-		this.item.styles.flexGrow = "1";
-		this.item.styles.flexShrink = "0";
-		this.item.styles.flexBasis = "100px";
+		this.toggleState();
+		this.item.makeMeFlexy();
 	}
 	getItemIndex(){
 		// this should probably be handled by the flexContainer class
 		let idx = this.idx = this.flexContainer.list.indexOf(this.item) + 1;
 		return idx;
 	}
-	logMe(e) {
-		console.log(e, this)
+
+	typeSwitcherFontSize(type) {
+		var base = 12;
+		if (type !== this.item.settings.state) {
+			base *=2 ;
+		}
+		return base + 'px';
 	}
 
 }

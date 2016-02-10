@@ -1,4 +1,4 @@
-<div class="control-panel">
+<div>
 	<span class="cp-title">control panel</span>
 	<div class="cp-wrap">
 		<div class="cp-items">
@@ -10,16 +10,21 @@
 			<div class="cp-i-settings">
 				<div class="cp-i-s-width">
 					<label>fixed
-						<input class="form-control" (change)="toggleLocalValues()" type="radio" name="flexType"
-									 checked/></label>
+						<input class="form-control" [(ngModel)]="itemDefaults.displayDefaults.state"
+									 (click)="updateDefaultState('fixed')"
+									 type="radio" name="flexType" value="fixed" checked/>
+					</label>
 					<label>flexible
-						<input class="form-control" (change)="toggleLocalValues()" type="radio" name="flexType"/></label>
+						<input class="form-control" [(ngModel)]="itemDefaults.displayDefaults.state"
+									 (click)="updateDefaultState('flexy')" type="radio" name="flexType" value="flexy" />
+					</label>
 				</div>
-				<label>lorem? <input class="form-control" [(ngModel)]="itemDefaults.lorem" type="text"/></label>
+				<label>lorem?
+					<input class="form-control lorem" [(ngModel)]="itemDefaults.displayDefaults.lorem" type="text"/></label>
 			</div>
 			<div class="cp-actions">
-				<a href="#" (click)="removeAllItems()">delete all</a>
-				<a href="#" (click)="tourResize()">resize box</a>
+				<a (click)="removeAllItems()">delete all</a>
+				<a (click)="resizeBox()">resize box</a>
 			</div>
 		</div>
 		<div class="cp-container">

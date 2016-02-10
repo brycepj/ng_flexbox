@@ -4,6 +4,7 @@ import {FlexContainer} from '../services/FlexContainer';
 import {CSSDefaults} from '../services/CSSDefaults';
 import {DerpPipe} from '../utils/pipes';
 import {containerOptions} from '../utils/data';
+import {FlexItemFactory} from '../services/FlexItemFactory';
 
 @Component({
 	selector: 'admin-panel',
@@ -15,39 +16,31 @@ import {containerOptions} from '../utils/data';
 export class AdminPanelCmp {
 	public options: any;
 	public itemDefaults: any;
-	constructor(private flexContainer: FlexContainer, private _cssDefaults: CSSDefaults) {
+	constructor(private flexContainer: FlexContainer,
+	            private _cssDefaults: CSSDefaults,
+	            public itemDefaults: FlexItemFactory) {
 		this.options = containerOptions;
-		this.itemDefaults = {
-			type: {
-				fixed: true,
-				flexy: false
-			},
-			lorem: 5,
-			timesClicked: 0
-		};
 	}
 
 	updateContainerStyles(prop, evt) {
 		var srcElem = evt.srcElement;
 		var newVal = srcElem.value;
-		// prop = _.kebabCase(prop);
 		this.flexContainer.styles[prop] = newVal;
-		console.log("Thinsg", prop, newVal);
 	}
 
 	changeItemTypeDefault(type, event) {
 		this.itemDefaults[type] = event.target.checked;
-		console.log(this.itemDefaults);
-		this.itemDefaults.timesClicked++;
+
+
 	}
 	private toggleLocalValues(){
-		let types = this.itemDefaults.type;
-		this.itemDefaults.type = _.mapValues(types, function (val) {
-			return !val;
-		});
-		console.log(this.itemDefaults);
-	}
 
+	}
+	updateDefaultState(val){
+		this.itemDefaults.setDefault({
+			state: val
+		});
+	}
 	addItem() {
 		this.flexContainer.createFlexItem();
 	}
@@ -65,6 +58,8 @@ export class AdminPanelCmp {
 	}
 
 
-
+	resizeBox() {
+		this.flexContainer.resizeContainer();
+	}
 
 }

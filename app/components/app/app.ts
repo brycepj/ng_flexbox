@@ -30,7 +30,7 @@ import {AboutCmp} from '../about/about';
       <a [routerLink]="['/Home']">Home</a>
       <a [routerLink]="['/About']">About</a>
     </nav>
-    <flex-container></flex-container>
+    <flex-container id="flexbox-app"></flex-container>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./components/app/app.css'],

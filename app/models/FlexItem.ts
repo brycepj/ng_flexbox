@@ -9,18 +9,62 @@ export class FlexItem {
 	public settings: any;
 	public text: string;
 	public date: any;
+	public lorem: string;
+	private wordBank: string[];
 
-	constructor(defaults) {
-		this.date = new Date();
-		this.styles = defaults;
+	constructor(styleDefaults, displayDefaults) {
+		this.wordBank = ['es7','mithril','apple\'s website','unobtrusive javascript','static','brad frost','organic','mockup','whitespace','above the fold','skeuomorphism','always be shipping','steve jobs','flat design','grid','net neutrality','SOPA','code','ICANN','content strategy','content','f.lux','blue beanie','rollover','table','css zen garden','preload','gif','sprite','laura kalbag','dev bootcamp','cs degree','hacker school','the picture element','W3 Fools','W3C','ftp','deployment strategy','python vs ruby','jeff atwood','stack overflow','just build websites','wordpress','java','pycharm','web storm','foreach','addClass','slice','alex sexton','80/20 rule','float drop','bacon ipsum','dogmatic','promise','atomic design','shoptalkshow','yayQuery','javascript jabber','vagrant','chris coyier','flexbox','device agnostic', 'breaks in ie6', 'paul irish', 'web standards', 'grok', 'crufty', 'angular', 'MV*', 'addy osmani','custom elements', 'paralax', 'performance budget', 'offline first', 'gulp', 'node', 'ie6 countdown', 'progressive enhancement', 'the Industry','svg','machine code','rails','django','google','indexDB','webgl','ux/ui','tim kadlec','retina','fixed header','minimalist','QR codes','art direction','masonry','infinite scrolling','lazy load','mobile navigation toggle', 'api','spa','ember','backbone','mvc','require','the open web','server farm', 'bash','free as in beer','nosql','how long does it take to learn javascript', 'gui','fortran','server-side','back-end', 'groovy on grails','haskell','erlang','continuous integration','capistrano','typescript','coffeescript','google dart','yehuda katz', 'classes', 'angular 2', 'igor minar', 'react', 'react native', 'systemjs', 'gulp', 'meteor', 'patrickjs', 'remoteconf', 'iife'];
+
+		this.styles = styleDefaults;
 		this.settings = {
-			lorem: 5,
-			state: 'flexy',
-			view: 'edit' || 'display'
+			loremCount: displayDefaults.lorem,
+			state: displayDefaults.state,
+			view: displayDefaults.view
 		};
-		this.text = "Hello text tho";
+		this.lorem = this.generateLorem(this.settings.loremCount);
+		this.setStylesByState();
+	}
+
+	generateLorem(count) {
+		let self = this;
+		var min = 0;
+		var max = this.wordBank.length;
+		var loremStore = [];
+		_.times(count, function () {
+			var randomIdx = Math.floor(Math.random() * (max - min + 1)) + min;
+			loremStore.push(self.wordBank[randomIdx]);
+			self.wordBank.splice(randomIdx, 1);
+			max--;
+		});
+		return loremStore.join(' ');
+	}
+
+	setStylesByState() {
+		this.settings.state === 'fixed' ? this.makeMeFixed() : this.makeMeFlexy();
+	}
+
+	makeMeFixed() {
+		let defaultsFixed = {
+			'flexGrow': null,
+			'flexShrink': null,
+			'flexBasis': null,
+			width: this.styles.width || '300px'
+		};
+		_.assign(this.styles, defaultsFixed);
+	}
+
+	makeMeFlexy(){
+		let defaultsFlexy = {
+			'flexGrow': "1",
+			'flexShrink': "0",
+			'flexBasis': "200px",
+			width: null
+		};
+		_.assign(this.styles, defaultsFlexy);
 	}
 }
+
+
 
 //var ItemStyles = {
 //	height: {

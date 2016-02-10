@@ -19,3 +19,17 @@ export class DerpPipe {
 		return Array.from(value);
 	}
 }
+
+@Pipe({name: 'IndexDisplay'})
+export class IndexDisplay {
+	transform(value) {
+		return value + 1;
+	}
+}
+
+//@Pipe({name: 'escapeHtml', pure: false})
+//export class EscapeHtmlPipe implements PipeTransform {
+//	transform(value: any, args: any[] = []) {
+//		// Escape 'value' and return it
+//	}
+//}

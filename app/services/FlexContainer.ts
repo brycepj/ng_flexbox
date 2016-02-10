@@ -36,5 +36,40 @@ export class FlexContainer {
 		this.list = [];
 	}
 
+	resizeContainer(){
+		// waiting on ng2 animation APIs
+		let notEmpty = this.list.length > 0;
+		if (notEmpty) {
+			this.collapseContainer();
+		}
+	}
+	private collapseContainer() {
+		var self = this;
+		setTimeout(function () {
+			let width = self.styles.width;
+			let cur = Number(width.substr(0, width.length-1));
+			let bottom = 45;
+			if (cur > bottom) {
+				self.styles.width = cur - .25 + '%';
+				self.collapseContainer();
+			} else {
+				self.expandContainer()
+			}
+
+		}, 5);
+	}
+	private expandContainer() {
+		var self = this;
+		setTimeout(function () {
+			let width = self.styles.width;
+			let cur = Number(width.substr(0, width.length-1));
+			let top = 100;
+			if (cur < top) {
+				self.styles.width = cur + .25 + '%';
+				self.expandContainer();
+			}
+		}, 5);
+	}
+
 }
 

@@ -1,34 +1,73 @@
 import {Component} from 'angular2/core';
+import {TourData, TourMessage} from '../services/tourData';
+import {IndexDisplay} from '../utils/pipes';
 
 @Component({
 	selector: 'tour-panel',
 	template: `
-    <div id="message-box" class="message-box">
+    <div>
       <span class="mb-title">tour</span>
-      <span class="mb-progress">{{tourBox.tourProgress}}</span>
-      <p class="mb-content">{{tourBox.currentMessage}}</p>
-      <a class="mb-action" *ngIf="tourBox.hasButton" (click)="tourBox.currentXUrl"> {{tourBox.currentXText}}</a>
-      <a class="mb-action" (click)="tourAction" *ngIf="tourBox.currentAction">{{tourBox.currentXText}}</a>
+      <span class="mb-progress">{{currentIdx | IndexDisplay }} / {{lastIdx | IndexDisplay}}</span>
+      <p class="mb-content">{{currentMessage.text}}</p>
+      <div *ngIf="currentMessage.btnText">
+	      <a class="mb-action" (click)="takeAction()"> {{currentMessage.btnText}}</a>
+      </div>
+
       <nav class="mb-nav">
-        <a href="#" (click)="tourPrevious"><i class="fa fa-chevron-left"></i></a>
-        <a href="#" (click)="tourNext"><i class="fa fa-chevron-right"></i></a>
+        <a (click)="tourPrevious()"><i class="fa fa-chevron-left"></i></a>
+        <a (click)="tourNext()"><i class="fa fa-chevron-right"></i></a>
       </nav>
     </div>
-	`
+	`,
+	pipes: [IndexDisplay],
+	providers: [TourData]
 })
 
 export class TourPanelCmp {
-	public tourBox:any;
-	public tourAction: any;
+	public currentIdx: number;
+	public lastIdx: number;
+	public currentMessage: TourMessage;
 
-	constructor() {
-		this.tourAction = {
+	constructor(private tourData: TourData) {
+		let curr = this.currentIdx = 0;
+		this.lastIdx = this.tourData.data.length -1;
+		this.currentMessage = tourData.data[curr];
+	}
 
-		};
-		this.tourBox = {
-			hasButton: function () {
-				console.log("Helo button");
-			}
+	tourNext() {
+		let curr = this.currentIdx;
+		if (curr !== this.lastIdx) {
+			curr = this.currentIdx = this.currentIdx + 1;
+			this.currentMessage = this.tourData.data[curr];
 		}
 	}
+
+	tourPrevious() {
+		let curr = this.currentIdx;
+		if (curr !== 0) {
+			curr = this.currentIdx = this.currentIdx - 1;
+			this.currentMessage = this.tourData.data[curr];
+		}
+	}
+
+	takeAction(){
+		let curr = this.currentMessage;
+		let action:string = curr.btnAction;
+		switch (action) {
+			case 'url':
+				console.log('navigate to:', curr.btnUrl);
+				break;
+			case 'resize':
+				console.log('resize');
+				break;
+			default:
+				this.buildTemplate(action);
+		}
+
+	}
+
+	buildTemplate(action) {
+		console.log('building template', action);
+	}
+
 }

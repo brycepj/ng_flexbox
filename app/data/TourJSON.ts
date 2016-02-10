@@ -1,5 +1,4 @@
 export var TourJSON = [
-
 	{
 		text: 'Step right up! Click the right arrow at the bottom of this box to start an interactive tour of flexbox.',
 	},
@@ -18,7 +17,6 @@ export var TourJSON = [
 			text: 'See the full article',
 			action: 'url'
 		}]
-
 	},
 	{
 		text: 'You can imagine how helpful this would be with building device-agnostic, responsive web sites and' +
@@ -51,13 +49,10 @@ export var TourJSON = [
 			action: 'url'
 		}]
 	},
-
-
 	{
 		text: 'Go ahead and click on the gear icon at the top-right of any of the flex items, to see the properties they' +
 		' have. Just simple, pixel-based height and width values. That\'s it.(You could use em or percent values too.)',
 	},
-
 	{
 		text: 'Keep in mind, while fixed-width flex items are sometimes all you need, they certainly don\'t show you' +
 		' all the magic flexbox has to offer. We\'ll get to that soon enough, but first...',
@@ -65,8 +60,6 @@ export var TourJSON = [
 	{
 		text: '...while we\'ve got these three fixed-width items here, take a minute or two to explore the container' +
 		' styling options at the top of the page.',
-		
-		
 	},
 	{
 		text: 'You can start with "flex-direction", which is responsible for setting the direction of the axis along' +
@@ -101,8 +94,6 @@ export var TourJSON = [
 	{
 		text: 'Finally we come to the "align-content" property. Its job is to align a flex container\'s lines when' +
 		' there is extra space between rows (if your items are in a row). It\'s important to note that this property only works when a flex container has more than one row/column of items.',
-		
-		
 	},
 	{
 		text: 'So, if you haven\'t done it yet, add 3 or 4 more items to your container so you can get acquainted with' +
@@ -112,7 +103,6 @@ export var TourJSON = [
 		text: 'By the way, you may have noticed the "delete all" button in the control panel. Any time you want to' +
 		' clear all of the items, give it a nice, furtive click.',
 	},
-
 	{
 		text: 'At this point, you\'ve seen a lot of what flexbox can do. But you may have noticed that not all of the' +
 		' properties you\'ve adjusted so far have had an effect on the items in the flexbox. That\'s because some of' +
@@ -149,7 +139,6 @@ export var TourJSON = [
 			"text": 'make a menu',
 			"action": 'nav'
 		}]
-
 	},
 	{
 		text: 'Compared to flex-grow, "flex-shrink" may be a little trickier, but still very useful. Basically it' +
@@ -238,12 +227,13 @@ export var TourJSON = [
 	},
 	{
 		text: 'UPDATE: In making stylistic changes to this app, I\'ve discovered various differences in how browsers' +
-		' render flexbox layouts (particularly Safari), some more significant than others. Long story short, with flexbox, tread lightly and test all the devices you can.',
-
+		' render flexbox layouts (particularly Safari), some more significant than others. Long story short, with' +
+		' flexbox, tread lightly and test all the devices you can.',
 	},
 	{
 		text: 'Well, I hope that helped you wrap your head around flexbox. It\'s a very useful property and almost' +
-		' certainly the future of CSS layouts. If it seems tricky at first, don\'t worry. Just keep tinkering and you\'ll get the hang of it.',
+		' certainly the future of CSS layouts. If it seems tricky at first, don\'t worry. Just keep tinkering and' +
+		' you\'ll get the hang of it.',
 	},
 	{
 		text: 'Oh, a few resources I found very helpful',
