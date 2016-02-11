@@ -444,6 +444,7 @@ em {
     display: block; }
 
 .flex-container {
+    margin-right: 15px;
     position: relative;
     padding: .5em;
     overflow: auto;
