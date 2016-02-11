@@ -18,6 +18,9 @@ export class FlexContainer {
 	}
 
 	createFlexItem() {
+		if (this.list.length === 0) {
+			this.hideMasthead();
+		}
 		let newItem = this._flexItemFactory.create();
 		newItem['index'] = this.list.length;
 		this.list.push(newItem);
@@ -69,6 +72,10 @@ export class FlexContainer {
 				self.expandContainer();
 			}
 		}, 5);
+	}
+	// gross hack!!
+	hideMasthead(){
+		document.querySelector('.masthead').className += ' hidden';
 	}
 
 }

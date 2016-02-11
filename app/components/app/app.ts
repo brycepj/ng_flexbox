@@ -1,7 +1,9 @@
 import {Component} from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { FlexContainer } from '../../services/FlexContainer';
 import {FlexContainerCmp} from '../flexContainer.component';
 import { Info } from '../../services/Info';
+import { NgIf } from 'angular2/common';
 
 // import {HTTP_PROVIDERS} from 'angular2/http';
 
@@ -11,7 +13,7 @@ import {AboutCmp} from '../about/about';
 @Component({
   selector: 'flexboxapp',
   template:`
-    <div class="masthead hidden">
+    <div *ngIf='!flexContainer.list.length' class="masthead">
       <h1 class="mh-logo">{{siteTitle}}</h1>
       <p class="mh-desc">{{siteDesc}}</p>
 
@@ -26,15 +28,15 @@ import {AboutCmp} from '../about/about';
         <p>{{lastUpdated}}</p>
       </div>
     </div>
-    <nav>
-      <a [routerLink]="['/Home']">Home</a>
-      <a [routerLink]="['/About']">About</a>
-    </nav>
+    <!--<nav>-->
+      <!--<a [routerLink]="['/Home']">Home</a>-->
+      <!--<a [routerLink]="['/About']">About</a>-->
+    <!--</nav>-->
     <flex-container id="flexbox-app" class="flex-container-wrap"></flex-container>
-    <router-outlet></router-outlet>
+    <!--<router-outlet></router-outlet>-->
   `,
   styleUrls: ['./components/app/app.css'],
-  directives: [ROUTER_DIRECTIVES, FlexContainerCmp]
+  directives: [ROUTER_DIRECTIVES, FlexContainerCmp, NgIf]
 })
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home' },
@@ -47,8 +49,9 @@ export class AppCmp {
   public siteSteps: any[];
   public lastUpdated: Date;
   public warning: string;
+  public listLength: number;
 
-  constructor() {
+  constructor(private flexContainer: FlexContainer) {
     this.setup();
   }
 
