@@ -14,7 +14,6 @@ import {PropsToSelectors} from '../utils/pipes';
 
   `],
 	template: `
-		<div id='flex-container-wrap' class="flex-container-wrap">
 			<div id="flex-container"  [ngStyle]="{
 		    'width': flexContainer.styles.width,
 		    'height': flexContainer.styles.height,
@@ -35,7 +34,6 @@ import {PropsToSelectors} from '../utils/pipes';
 				'align-self': item.styles.alignSelf
 	    }"></flex-item>
 			</div>
-    </div>
     <aside class="sidebar">
 			<tour-panel id="message-box" class="message-box"></tour-panel>
 			<admin-panel class="control-panel"></admin-panel>
