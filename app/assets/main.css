@@ -366,8 +366,7 @@ em {
     padding-left: 20px; }
 .cp-container label {
     display: block;
-    font-size: 12px;
-    font-size: 0.75rem;
+    font-size: 11px;
     line-height: 16px;
     line-height: 1rem; }
 .cp-container label select {
@@ -430,7 +429,9 @@ em {
     color: white; }
 
 .cp-i-settings label {
-    display: inline-block; }
+    display: inline-block;
+    margin: 5px 0;
+}
 .cp-i-settings input[type="text"] {
     width: 55px;
     border: none;
@@ -684,4 +685,12 @@ input {
 
 .form-control {
     height: 30px;
+}
+
+option, select {
+    color: black;
+}
+
+.lorem {
+    margin: 5px 0;
 }
