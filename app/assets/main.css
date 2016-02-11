@@ -557,10 +557,28 @@ em {
     top: 0.75em;
     right: 0.75em; }
 
-.mb-action {
+.mb-actions {
+    width: 85%;
     position: absolute;
     bottom: 0.75em;
-    right: 0.75em; }
+    right: 0.75em;
+    padding: 0 .75em 0 0;
+}
+
+.mb-action {
+    display: block;
+    text-align: right;
+    font-size: .85em;
+    margin: 0;
+    padding: 0 15px 0 0;
+}
+
+/*.mb-action:after {*/
+    /*content:'|';*/
+/*}*/
+/*.mb-action:before {*/
+    /*content: '|';*/
+/*}*/
 
 .mb-nav {
     position: absolute;
@@ -663,3 +681,6 @@ input {
     color: black!important;
 }
 
+.form-control {
+    height: 30px;
+}

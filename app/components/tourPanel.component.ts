@@ -1,6 +1,9 @@
 import {Component} from 'angular2/core';
+import {NgFor, NgIf} from 'angular2/common';
 import {TourData, TourMessage} from '../services/tourData';
 import {IndexDisplay} from '../utils/pipes';
+import {FlexContainer} from '../services/FlexContainer';
+import {PatternBuilder} from "../services/PatternBuilder";
 
 @Component({
 	selector: 'tour-panel',
@@ -9,8 +12,9 @@ import {IndexDisplay} from '../utils/pipes';
       <span class="mb-title">tour</span>
       <span class="mb-progress">{{currentIdx | IndexDisplay }} / {{lastIdx | IndexDisplay}}</span>
       <p class="mb-content">{{currentMessage.text}}</p>
-      <div *ngIf="currentMessage.btnText">
-	      <a class="mb-action" (click)="takeAction()"> {{currentMessage.btnText}}</a>
+      <div class="mb-actions" *ngIf="currentMessage.buttons">
+	      <a *ngFor="#btn of currentMessage.buttons #i=index"
+	        class="mb-action" (click)="takeAction(btn.action, i)">{{btn.text}}</a>
       </div>
 
       <nav class="mb-nav">
@@ -20,7 +24,8 @@ import {IndexDisplay} from '../utils/pipes';
     </div>
 	`,
 	pipes: [IndexDisplay],
-	providers: [TourData]
+	providers: [TourData, PatternBuilder],
+	directives: [NgFor, NgIf]
 })
 
 export class TourPanelCmp {
@@ -28,7 +33,7 @@ export class TourPanelCmp {
 	public lastIdx: number;
 	public currentMessage: TourMessage;
 
-	constructor(private tourData: TourData) {
+	constructor(private tourData: TourData, private flexContainer: FlexContainer, private build:PatternBuilder) {
 		let curr = this.currentIdx = 0;
 		this.lastIdx = this.tourData.data.length -1;
 		this.currentMessage = tourData.data[curr];
@@ -50,24 +55,43 @@ export class TourPanelCmp {
 		}
 	}
 
-	takeAction(){
-		let curr = this.currentMessage;
-		let action:string = curr.btnAction;
+	takeAction(action, index){
+		let buttons = this.currentMessage.buttons;
 		switch (action) {
 			case 'url':
-				console.log('navigate to:', curr.btnUrl);
+				this.openInNewTab(buttons[index].url);
 				break;
 			case 'resize':
-				console.log('resize');
+				this.flexContainer.resizeContainer();
 				break;
 			default:
-				this.buildTemplate(action);
+				this.buildPattern(action);
 		}
 
 	}
 
-	buildTemplate(action) {
-		console.log('building template', action);
+	private openInNewTab(url) {
+	var win = window.open(url, '_blank');
+	win.focus();
+}
+
+	buildPattern(pattern) {
+		this.flexContainer.list = [];
+
+		switch(pattern) {
+			case 'menu':
+				this.build.menu();
+				break;
+			case 'holyGrail':
+				this.build.website();
+				break;
+			case 'grid':
+
+				break;
+			default:
+				throw new Error('Bad template');
+		}
+		console.log('building template');
 	}
 
 }

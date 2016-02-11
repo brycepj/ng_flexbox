@@ -16,10 +16,9 @@ export class FlexItemFactory {
 		this.displayDefaults = displayDefaults;
 	}
 
-	create() {
-		let styleDefaults = this._cssDefaults.getitem();
-		let displayDefaults = this.displayDefaults;
-
+	create(styles, display) {
+		let styleDefaults = styles || this._cssDefaults.getitem();
+		let displayDefaults = display || this.displayDefaults;
 		return new FlexItem(styleDefaults, displayDefaults);
 	}
 

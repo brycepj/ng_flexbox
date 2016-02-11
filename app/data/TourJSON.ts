@@ -35,7 +35,7 @@ export var TourJSON = [
 		' three times to create three new flex items and your first flexbox layout!',
 	},
 	{
-		text: 'Ready to see this baby in btnAction? Let\'s simulate smaller screens by resizing the container element.',
+		text: 'Ready to see this baby in action? Let\'s simulate smaller screens by resizing the container element.',
 		buttons: [{
 			text: 'resize it!',
 			"action": 'resize'
@@ -137,7 +137,7 @@ export var TourJSON = [
 		text: 'In fact, let\'s make one! (Remember to resize the container!)',
 		buttons: [{
 			"text": 'make a menu',
-			"action": 'nav'
+			"action": 'menu'
 		}]
 	},
 	{
@@ -156,7 +156,7 @@ export var TourJSON = [
 		' to... buuuut the smallest it can be is "X pixels or ems".',
 	},
 	{
-		text: 'To see it in btnAction, just resize the flex container. You\'ll see that when the item reaches its flex' +
+		text: 'To see it in action, just resize the flex container. You\'ll see that when the item reaches its flex' +
 		' basis, it stops flexing and something else has to flex or pushed to the next line.',
 	},
 	{
